@@ -1,0 +1,23 @@
+Flask==2.0.2
+numpy==1.26.1
+pandas==1.5.3
+Pillow==10.0.0
+SQLAlchemy==1.4.22
+Flask-Migrate==3.0.1
+Werkzeug==2.0.2
+tensorflow==2.14.0
+opencv-python==4.5.3.56
+
+
+
+
+python 3.10 (64bit)
+
+
+install Visual C++  
+  
+	Link -https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170#latest-microsoft-visual-c-redistributable-version
+        dowmload--- x64: vc_redist.x64.exe
+
+
+https://support.microsoft.com/en-us/topic/the-latest-supported-visual-c-downloads-2647da03-1eea-4433-9aff-95f26a218cc0

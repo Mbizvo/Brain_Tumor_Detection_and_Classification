@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Brain Tumor Detection and Classification</title>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='assets/img/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='assets/img/favicon.png') }}">
+    <link href="{{ url_for('static', filename='assets/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='assets/css/preview.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='assets/css/responsive.css') }}" rel="stylesheet">
+</head>
+<body>
+    <header id="masthead" class="site-header site-header-white">
+        <nav id="primary-navigation" class="site-navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="site-title"><span>Brain</span> Tumor Detection</a>
+                </div>
+                <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{{ url_for('about') }}">About</a></li>
+                        <li><a href="{{ url_for('login') }}">Login</a></li>
+                        <li class="active"><a href="{{ url_for('index') }}">Preview</a></li>
+                        <li><a href="{{ url_for('add_patient') }}">Add Patient</a></li>
+                        <li><a href="{{ url_for('performance') }}">Performance Analysis</a></li>
+                        <li><a href="{{ url_for('chart') }}">Chart</a></li>
+                        <li><a href="{{ url_for('report') }}">Report</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div id="hero" class="hero overlay subpage-hero portfolio-hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Preview</h1>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url_for('first') }}">Brain Tumor Classification</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <main id="main" class="site-main">
+        <section class="site-section section-ui-elements">
+            <div class="container">
+                <div class="typography">
+                    <h2 class="text-center heading-separator">Preview</h2>
+                    <center>
+                        <div class="section-header">
+                            <h2></h2>
+                        </div>
+                        <div class="container-fluid row">
+                            <div class="navbar-header col-md-1 col-sm-1"></div>
+                        </div>
+                        <div class="limiter">
+                            <div class="container-login100" style="background-image: url({{ url_for('static', filename='images/background1.jpg') }}); background-size: fill;">
+                                <div class="wrap-login100">
+                                    <div class="login100-form-title" style="background-image: url({{ url_for('static', filename='images/background2.jpg') }});">
+                                        <span class="login100-form-title-1">Upload Image:</span>
+                                    </div>
+                                    <br><br>
+                                    <form class="login100-form validate-form" action="{{ url_for('get_output') }}" method="POST" enctype="multipart/form-data">
+                                        <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
+                                            <br>
+                                            <input class="input100" type="file" name="my_image" id="imagefile" class="btn" accept="image/*" onchange="previewImage();" required>
+                                        </div>
+                                        <img id="preview">
+                                        <div class="container-login100-form-btn">
+                                            <br><br>
+                                            <button class="btn btn-primary" type="submit">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </center>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row"></div>
+        </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='assets/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/bootstrap-select.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/jquery.slicknav.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/jquery.countTo.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/jquery.shuffle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/script.js') }}"></script>
+    <script>
+        function previewImage() {
+            var file = document.getElementById("imagefile").files;
+            if (file.length > 0) {
+                var fileReader = new FileReader();
+                fileReader.onload = function (event) {
+                    document.getElementById("preview").setAttribute("src", event.target.result);
+                };
+                fileReader.readAsDataURL(file[0]);
+            }
+        }
+    </script>
+</body>
+</html>
+
+

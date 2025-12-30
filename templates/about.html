@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Brain Tumor Detection</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/about.css') }}">
+</head>
+<body>
+    <header id="masthead" class="site-header site-header-white">
+        <nav id="primary-navigation" class="site-navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="site-title" href="{{ url_for('about') }}"><span>Brain</span> Tumor Detection</a>
+                </div>
+                <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        
+                        <li><a href="{{ url_for('register') }}" class="bold-link">Register</a></li>
+                        <li><a href="{{ url_for('login') }}" class="bold-link">Login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div id="hero" class="hero overlay subpage-hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>About</h1>
+                <ol class="breadcrumb">
+                  
+                  <li class="breadcrumb-item active">About</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <main id="main" class="site-main">
+        <section class="site-section section-about">
+            <div class="container">
+                <h2 class="text-center heading-separator">About Brain Tumor Detection and Classification App</h2>
+                <p class="lead text-center">
+                    Welcome to the Brain Tumor Detection and Classification App. This application helps to detect and classify brain tumors using advanced deep learning techniques.
+                </p>
+                <hr>
+                <p>
+                    The app is designed to assist medical professionals in diagnosing brain tumors with greater accuracy and efficiency. By uploading MRI images, the app can quickly analyze and predict the type of tumor present.
+                </p>
+                <ul class="tumor-list">
+                    <li><strong>Glioma Tumor</strong></li>
+                    <li><strong>Meningioma Tumor</strong></li>
+                    <li><strong>Pituitary Tumor</strong></li>
+                    <li><strong>No Tumor</strong></li>
+                </ul>
+                <p>
+                    This tool is powered by a deep learning model trained on a large dataset of brain MRI images. The model uses ResNet-50 architecture, which is known for its accuracy in image classification tasks.
+                </p>
+                <p>
+                    For more information or to start using the app, please <a href="{{ url_for('register') }}" class="bold-link">register</a> or <a href="{{ url_for('login') }}" class="bold-link">login</a>.
+                </p>
+                <p>
+                    If you have any questions or need further assistance, please contact us at:<br>
+                    Email: <a href="mailto:r2113082q@students.msu.ac.zw">r2113082q@students.msu.ac.zw</a>
+                </p>
+            </div>
+        </section>
+    </main>
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>&copy; 2024 Brain Tumor Detection. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='assets/js/bootstrap.min.js') }}"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

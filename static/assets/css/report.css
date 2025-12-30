@@ -1,0 +1,51 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    padding: 20px;
+    font-size: 20px; /* Reduced font size */
+}
+
+h1 {
+    font-size: 48px; /* Reduced font size */
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 36px; /* Reduced font size */
+    margin-top: 30px;
+}
+
+ul {
+    font-size: 24px; /* Reduced font size */
+}
+
+.report-container {
+    margin-top: 30px;
+}
+
+.report-table th, .report-table td {
+    padding: 15px; /* Reduced padding */
+    font-size: 24px; /* Reduced font size */
+    text-align: left;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+    padding: 0.75rem 2rem;
+    font-size: 1.5rem;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+
+
+
+

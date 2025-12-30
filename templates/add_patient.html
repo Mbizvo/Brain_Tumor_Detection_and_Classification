@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Add Patient</title>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='assets/img/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='assets/img/favicon.png') }}">
+    <link href="{{ url_for('static', filename='assets/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='assets/css/add_patient.css') }}" rel="stylesheet">
+</head>
+<body>
+    <header id="masthead" class="site-header site-header-white">
+        <nav id="primary-navigation" class="site-navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="site-title"><span>Brain</span> Tumor Detection</a>
+                </div>
+                <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{{url_for('about')}}">About</a></li>
+                        <li><a href="{{url_for('register')}}">Register</a></li>
+                        <li><a href="{{url_for('login')}}">Login</a></li>
+                        <li><a href="{{url_for('index')}}">Preview</a></li>
+                        <li class="active"><a href="{{url_for('add_patient')}}">Add Patient</a></li>
+                        <li><a href="{{url_for('performance')}}">Performance Analysis</a></li>
+                        <li><a href="{{url_for('chart')}}">Chart</a></li>
+                        <li><a href="{{url_for('report')}}">Report</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main id="main" class="site-main">
+        <section class="site-section section-ui-elements">
+            <div class="container">
+                <div class="typography">
+                    <h2 class="text-center heading-separator">Add Patient</h2>
+                    <div class="col-md-6 col-lg-4 col-md-offset-3 col-lg-offset-4">
+                        <form method="POST" action="{{ url_for('add_patient') }}">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="age">Age</label>
+                                <input type="number" class="form-control" id="age" name="age" min="1" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="gender">Gender</label>
+                                <select class="form-control" id="gender" name="gender" required>
+                                    <option value="">Select Gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="tumor_type">Tumor Type</label>
+                                <select class="form-control" id="tumor_type" name="tumor_type" required>
+                                    <option value="">Select Tumor Type</option>
+                                    <option value="Pituitary">Pituitary</option>
+                                    <option value="Glioma">Glioma</option>
+                                    <option value="Meningioma">Meningioma</option>
+                                    <option value="No Tumor">No Tumor</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="date_diagnosed">Date Diagnosed</label>
+                                <input type="date" class="form-control" id="date_diagnosed" name="date_diagnosed" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Add Patient</button>
+                        </form>
+                        {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                                <ul>
+                                    {% for message in messages %}
+                                        <li>{{ message }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        {% endwith %}
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row"></div>
+        </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='assets/js/bootstrap.min.js') }}"></script>
+</body>
+</html>
+
+
+
+
+
+

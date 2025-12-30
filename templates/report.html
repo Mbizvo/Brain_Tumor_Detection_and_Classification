@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/report.css') }}">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            padding: 20px;
+            font-size: 18px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 32px;
+            margin-top: 30px;
+        }
+        ul {
+            font-size: 24px;
+        }
+        .report-container {
+            margin-top: 30px;
+        }
+        .report-table th, .report-table td {
+            padding: 20px;
+            font-size: 24px;
+            text-align: left;
+        }
+        .back-button {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Report</h1>
+        <ul>
+            <li>Total Tumors Diagnosed: {{ total_tumors }}</li>
+            <li>Male Patients: {{ male_count }}</li>
+            <li>Female Patients: {{ female_count }}</li>
+            <li>Glioma Cases: {{ glioma_count }}</li>
+            <li>Meningioma Cases: {{ meningioma_count }}</li>
+            <li>Pituitary Cases: {{ pituitary_count }}</li>
+            <li>No Tumor Cases: {{ no_tumor_count }}</li>
+            <li>Patients Age < 40: {{ age_below_40 }}</li>
+            <li>Patients Age >= 40: {{ age_above_40 }}</li>
+        </ul>
+        <div class="report-container">
+            <h2>Patient Details</h2>
+            <table class="table table-bordered report-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>Tumor Type</th>
+                        <th>Date Diagnosed</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for report in reports %}
+                    <tr>
+                        <td>{{ report.name }}</td>
+                        <td>{{ report.age }}</td>
+                        <td>{{ report.gender }}</td>
+                        <td>{{ report.tumor_type }}</td>
+                        <td>{{ report.date_diagnosed.strftime('%d-%m-%Y') }}</td>
+                        <td>
+                            <form action="{{ url_for('delete_patient', patient_id=report.id) }}" method="POST" style="display:inline;">
+                                <input type="submit" class="btn btn-danger btn-sm" value="Delete">
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="report-container">
+            <h2>Tumors Diagnosed Per Month</h2>
+            <div id="tumors-per-month"></div>
+        </div>
+        <div class="report-container">
+            <h2>Tumors Diagnosed Per Year</h2>
+            <div id="tumors-per-year"></div>
+        </div>
+        <a href="{{ url_for('index') }}" class="btn btn-primary back-button">Back to Home</a>
+    </div>
+    <script src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/bootstrap.min.js') }}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var tumorsPerMonth = {{ tumors_per_month|tojson }};
+            var tumorsPerYear = {{ tumors_per_year|tojson }};
+
+            var months = Object.keys(tumorsPerMonth);
+            var monthCounts = Object.values(tumorsPerMonth);
+            
+            var years = Object.keys(tumorsPerYear);
+            var yearCounts = Object.values(tumorsPerYear);
+
+            var monthData = [{
+                x: months,
+                y: monthCounts,
+                type: 'bar'
+            }];
+
+            var yearData = [{
+                x: years,
+                y: yearCounts,
+                type: 'bar'
+            }];
+
+            Plotly.newPlot('tumors-per-month', monthData, {
+                title: 'Tumors Diagnosed Per Month'
+            });
+
+            Plotly.newPlot('tumors-per-year', yearData, {
+                title: 'Tumors Diagnosed Per Year'
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
